@@ -85,7 +85,7 @@ Do not neglect to plan, you will thank yourself later for being proactive!
 | Saturday   |   | Start on the basic html structure of the game.           |          |                 |
 | Sunday     |   | Work on the variables and functions.                  |          |                 |
 | Monday     |   | Continue work on functionality and handlers.                        |          |                 |
-| Tuesday    |   | Work on styling and any loose ends on the MVP.                      |          |                 |
+| Tuesday    |   | Work on styling and any loose ends on the MVP.                      | Possible issue with alignment of elements.         |                 |
 | Wedenesday |   | Work on stretch goals              |          |                 |
 | Thursday   |   | Continue stretch goals |          |                 |
 | Friday     |   | Presentation Day!                  |          |                 |
