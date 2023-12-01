@@ -8,9 +8,17 @@
 
 ## Project Description 
 
-My app is called Black Jack. It's a game app for players who want to play Tic Tac Toe online. Two players can join an online game and play a round of Tic Tac Toe, with the score being kept automatically and game results displayed at then end of a round -- whichever player won, or in the case of a draw, a tie between the users. Users will have the option to play again. In the future, I'd like to add a feature where more than one person plays simultaniously. 
+My app is called Black Jack. It's a game app for players who want to play Black Jack online. A player goes up against the dealer to see who gets a total of 21 or whoever gets closer after drawing cards. You are able to make a wager as well, and the amount you won and the result is annouced at the end of the game,whether the player or dealer won or if it was a tie. Users will have the option to play as many times as they desire. A wager must be made before ech game. In the future, I'd like to add a feature where more than one person plays simultaniously. 
 
 ## Wire Frames
+    
+**Initial Landing View**
+
+![image](./assets/blackjack.jpg)
+
+**Results View**
+
+![image](./assets/blackjack.jpg)
 
 ## Pseudo Code
 
@@ -41,32 +49,23 @@ My app is called Black Jack. It's a game app for players who want to play Tic Ta
     5.2) Start button wont work until a wager is made. if wager variable equals 0 then start doesnt work.
     5.3) Message variable is set to empty string after start button is pressed.
 
-**Initial Landing View**
-
-![image](https://media.git.generalassemb.ly/user/21811/files/0f7aee00-c1d9-11ea-9dad-de086a5c91fc)
-
-**Results View**
-
-![image](https://media.git.generalassemb.ly/user/21811/files/1a358300-c1d9-11ea-95da-6c14aefb0f18)
 
 ## User Stories
 
 #### MVP Goals
 
-- As a player, I want my game to recognize three ticks in a row so that I know who won.
-- As a player, I would like to be informed when the game is over due to a tie.
-- As a player, I would like to know whose turn it is so that I don't have to keep track.
-- As a player, I would like to be informed with some indication when I mark a game box so that I know my selection worked.
-- As a player who requires assistive technologies, I would like accessibility features so that I'm not left out of enjoying the game.
-- As a player I would like to be able to restart the game after a win, loss or tie.
-- As a player, I want the UI to be engaging and out of the way so that I enjoy the experience of playing the game.\*\*
+- I want the game to tell me how much im waging.
+- I want the game to display the cards in hand.
+- I want the results of the game to be decalred.
+- I want the the hit me button to work.
+- I want the stay button to work.
+- I want the card selection to be randomized properly.
 
 #### Stretch Goals
 
-- As a player, I would like a victory animation when I win the game, so that I feel good about my victory!
-- As a player, I would like to hear an audible sound when I mark a game box so that I know my selection worked.
-- As a player, I would like to play this game online so that I don't have to have my challenger sitting next to me.
-- As a player who wants to dominate the battlefield I want to become the ultimate tic tac toe tactician so I can beat all of my opponents
+- I want to add background music.
+- I want fire works when the player wins.
+- I want to add a card drawing animation.
 
 #### Notionboard Template
 Notionboard template for building projects ( You can use this for any project )
@@ -83,11 +82,11 @@ Do not neglect to plan, you will thank yourself later for being proactive!
 |------------|---|------------------------------------|----------|-----------------|
 | Thursday   |   | Create and present proposal        |          |                 |
 | Friday     |   | Create html, js, css files         |          |                 |
-| Saturday   |   | Create basic scaffolding           |          |                 |
-| Sunday     |   | Add functionality                  |          |                 |
-| Monday     |   | Add styling                        |          |                 |
-| Tuesday    |   | Finaliza MVP                       |          |                 |
+| Saturday   |   | Start on the basic html structure of the game.           |          |                 |
+| Sunday     |   | Work on the variables and functions.                  |          |                 |
+| Monday     |   | Continue work on functionality and handlers.                        |          |                 |
+| Tuesday    |   | Work on styling and any loose ends on the MVP.                      |          |                 |
 | Wedenesday |   | Work on stretch goals              |          |                 |
-| Thursday   |   | Work on icebox items if applicable |          |                 |
+| Thursday   |   | Continue stretch goals |          |                 |
 | Friday     |   | Presentation Day!                  |          |                 |
 |            |   |                                    |          |                 |
