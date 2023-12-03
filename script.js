@@ -17,7 +17,7 @@ function cardFill(){
     }
 }
 
-// cardFill()
-// console.log(deck)
+cardFill()
+console.log(deck)
 
 // const cardSuit = document.querySelector()
