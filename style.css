@@ -2,10 +2,41 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 
+.hands, .results, .dealer-side, .player-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/* display: flex;
-justify-content: center;
-align-items: center; */
+header, footer {
+    flex-direction: column;
+}
+
+.card {
+    width: 150px;
+    height: 200px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .card .rank {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+
+  .card .suit {
+    font-size: 24px;
+  }
