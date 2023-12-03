@@ -30,13 +30,17 @@ header, footer {
     align-items: center;
     justify-content: center;
     font-family: Arial, sans-serif;
-  }
+}
 
-  .card .rank {
+.card .rank {
     font-size: 24px;
     margin-bottom: 5px;
-  }
+}
 
-  .card .suit {
+.card .suit {
     font-size: 24px;
-  }
+}
+
+.results {
+    margin: 50px;
+}
