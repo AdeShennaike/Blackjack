@@ -20,4 +20,5 @@ function cardFill(){
 cardFill()
 console.log(deck)
 
-// const cardSuit = document.querySelector()
+const cardSuit = document.querySelector(".suit")
+// cardSuit.innerText = "&#9830;&#65039;"

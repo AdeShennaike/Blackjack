@@ -44,3 +44,7 @@ header, footer {
 .results {
     margin: 50px;
 }
+
+.suit {
+    content: "&#9830;&#65039;";
+}
