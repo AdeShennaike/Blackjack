@@ -64,15 +64,18 @@ function removeCards(){
     }
 }
 
+function sum(){
+    playerHand
+}
                     //Click handler for buttons
     
-                    console.log(wagerAmount.textContent)
 //initializes the game table to begin a new game
-startButton.addEventListener("click", function(){
-    if(wagerAmount.innerHTML === '0'){
+startButton.addEventListener("click", ()=>{
+    if(wagerAmount.textContent === '0'){
         message.textContent = "Must place wager before start!"
     }
     else{
+        message.textContent = ""
         dealDealerCards()
         dealPlayerCards()
         removeCards()
@@ -83,15 +86,28 @@ startButton.addEventListener("click", function(){
 })
 
 //Lets you place the bet 
-betButton.addEventListener("click", function(){
-    wagerAmount.innerHTML = wager.value
+betButton.addEventListener("click", ()=>{
+    wagerAmount.textContent = wager.value
     wager.value = 0
 })
+
+//Allows player to draw new card
+hitButton.addEventListener("click", ()=>{
+    hit()
+    console.log(playerHand)
+    console.log(deck)
+})
+function hit(){
+    for(let i = 0; i < 1; i++){
+        playerHand.push(deck[Math.floor(Math.random() * deck.length)])
+    }
+    deck.splice(deck.indexOf(playerHand[playerHand.length - 1].toString()), 1)
+}
 
 //Starts the game table fresh
 function init(){
     message.textContent = ""
-    wagerAmount.innerHTML = 0;
+    wagerAmount.textContent = 0;
     wager.value = 0;
     moneyEarned = 0;
     handSum = 0;
