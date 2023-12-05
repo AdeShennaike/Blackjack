@@ -2,15 +2,23 @@
 const deck = ["sK", "cK", "hK", "dK", "sQ", "cQ", "hQ", "dQ", "sJ", "cJ", "hJ", "dJ", "sA", "cA", "hA", "dA"]
 
 //Variables
-let wager
 let moneyEarned
 let handSum
 let winner
 let playerHand
 let dealerHand
-const results = document.querySelector(".results")    
+const startButton = document.querySelector(".start")
+const hitButton = document.querySelector(".hit")
+const stayButton = document.querySelector(".stay")
+const betButton = document.querySelector(".bet")
+const wager = document.querySelector(".wager")
+const wagerAmount = document.querySelector(".amount")
+const message = document.querySelector(".message")    
 const cardSuit = document.querySelector(".suit")
 const cardRank = document.getElementsByClassName("rank")
+// console.log(message.textContent)
+
+init()
 
 //Function fills in the rest of the card array
 function deckFill(){
@@ -56,8 +64,35 @@ function removeCards(){
     }
 }
 
+                    //Click handler for buttons
+    
+                    console.log(wagerAmount.textContent)
+//initializes the game table to begin a new game
+startButton.addEventListener("click", function(){
+    if(wagerAmount.innerHTML === '0'){
+        message.textContent = "Must place wager before start!"
+    }
+    else{
+        dealDealerCards()
+        dealPlayerCards()
+        removeCards()
+        console.log(playerHand)
+        console.log(dealerHand)
+        console.log(deck)
+    }
+})
+
+//Lets you place the bet 
+betButton.addEventListener("click", function(){
+    wagerAmount.innerHTML = wager.value
+    wager.value = 0
+})
+
+//Starts the game table fresh
 function init(){
-    wager = 0;
+    message.textContent = ""
+    wagerAmount.innerHTML = 0;
+    wager.value = 0;
     moneyEarned = 0;
     handSum = 0;
     winner = null
@@ -66,10 +101,9 @@ function init(){
     dealerHand = []
 }
 
-init()
 // dealPlayerCards()
 // dealDealerCards()
 // removeCards()
-// console.log(playerHand)
-// console.log(dealerHand)
-// console.log(deck)
+console.log(playerHand)
+console.log(dealerHand)
+console.log(deck)
