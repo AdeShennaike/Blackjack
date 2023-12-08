@@ -1,7 +1,7 @@
 body {
     height: 100vh;
     margin: 0;
-    background-image: url(./assets/_background.jpg);
+    background-image: url("./assets/_background.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,5 +43,41 @@ header, footer {
 }
 
 .results {
-    margin: 50px;
+    margin: 5px;
+}
+.results p {
+    font-size: 2rem;
+    margin: 1rem;
+}
+
+.button {
+    width: 5rem;
+    background-color: red;
+    color: black;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.hit {
+    margin: 2rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.player {
+    width: 100%;
+    justify-content: left;
+}
+
+.dealer {
+    width: 100%;
+    justify-content: right;
+}
+
+.player-sum .dealer-sum {
+    /* font-size: ; */
 }

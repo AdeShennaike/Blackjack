@@ -265,7 +265,7 @@ function renderCard(playerOrDealerHand, playerOrDealerCont){
         if(render[i][0] === "h"){cardSuit = '&#9829;&#65039;'}
         if(render[i][0] === "s"){cardSuit = '&#9824;&#65039;'}
         if(render[i][2]){cardRank = 10}
-        createCard(cardRank, cardSuit, playerOrDealerCont); 
+        createCard(cardRank, cardSuit, playerOrDealerCont)
     }
 } 
 
@@ -283,7 +283,7 @@ function renderNewCard(playerOrDealerHand, playerOrDealerCont){
         if(render[i][0] === "h"){cardSuit = '&#9829;&#65039;'}
         if(render[i][0] === "s"){cardSuit = '&#9824;&#65039;'}
         if(render[i][2]){cardRank = 10}
-        createCard(cardRank, cardSuit, playerOrDealerCont);; 
+        createCard(cardRank, cardSuit, playerOrDealerCont)
     }  
 } 
 
