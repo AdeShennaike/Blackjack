@@ -2,7 +2,6 @@
 const deck = ["sK", "cK", "hK", "dK", "sQ", "cQ", "hQ", "dQ", "sJ", "cJ", "hJ", "dJ", "sA", "cA", "hA", "dA"]
 
 //Variables
-let moneyEarned
 let playerHandSum
 let dealerHandSum
 let winner
@@ -19,6 +18,7 @@ const cardSuit = document.querySelector(".suit")
 const cardRank = document.getElementsByClassName("rank")
 const playerSum = document.querySelector(".player-sum")
 const dealerSum = document.querySelector(".dealer-sum")
+const moneyEarned = document.querySelector(".money-earned")
 
 init()
 
@@ -38,12 +38,6 @@ function deckFill(){
     }
 }
 
-// cardSuit.innerHTML = "&#9830;&#65039;"
-// for(let i = 0; i < cardRank.length; i++){
-    //     if(cardRank[i].innerHTML === "A")
-    // }
-    
-    
     //draws random card from deck to players hand.
     function dealPlayerCards(){
         for(let i = 0; i < 2; i++){
@@ -127,19 +121,26 @@ function deckFill(){
             
         }
         //If theres an ace in hand and total value is over 21 then ace equals 1 
-        for(let i = 0; i < sumArr.length; i++){
-            if(sumArr[i][1].includes('A')){
-                playerOrDealerSum -= 10
-                playOrDealSum.textContent = playerOrDealerSum
-            }
-        }
-        console.log(playerOrDealerSum)
+        // for(let i = 0; i < sumArr.length; i++){
+        //     if(sumArr[i][1].includes('A')){
+        //         playerOrDealerSum -= 10
+        //         playOrDealSum.textContent = playerOrDealerSum
+        //     }
+        // }
         if(playerOrDealerSum > 21){
-            message.textContent = "BUST!"
+            winner = false
+            setTimeout(()=>{
+                init()
+              }, 15000);
         }
         else if(playerOrDealerSum === 21){
-            message.textContent = "BLACK JACK"
+            winner = true
+            setTimeout(()=>{
+                init()
+            }, 15000);
         }
+        // moneyEarned.textContent = moneyEarned.textContent + (wagerAmount.textContent * 3)
+        // message.textContent = `BLACK JACK! You won ${moneyEarned.textContent}`
     }
     
     //Click handler for buttons
@@ -156,11 +157,34 @@ startButton.addEventListener("click", ()=>{
         message.textContent = ""
         dealDealerCards()
         dealPlayerCards()
+        console.log(deck)
         console.log(playerHand)
         console.log(dealerHand)
         removeCards()
         sum(playerHand, playerHandSum, playerSum)
         sum(dealerHand, dealerHandSum, dealerSum)
+        cardRender()
+    }
+})
+
+stayButton.addEventListener("click", ()=>{
+    message.textContent = "Dealers turn"
+
+    for(let i = 0; i < 5; i++){
+        if(dealerSum.textContent < 17){
+            hit(dealerHand)
+            sum(dealerHand, dealerHandSum, dealerSum)
+            if(dealerSum.textContent >= 17){
+                return
+            }
+        }
+        else{
+            return
+        }
+    }
+    
+    if(dealerSum.textContent === 21){
+        winner = false
     }
 })
 
@@ -172,7 +196,7 @@ betButton.addEventListener("click", ()=>{
     }
     else{
         wagerAmount.textContent = wager.value
-        wager.value = 0
+        wager.value = '0'.substring(1)
     }
 })
 
@@ -188,46 +212,31 @@ hitButton.addEventListener("click", ()=>{
     }
 })
 function hit(playerOrDealerHand){
-    if(message === ""){
-        for(let i = 0; i < 1; i++){
-            playerOrDealerHand.push(deck[Math.floor(Math.random() * deck.length)])
-        }
-        deck.splice(deck.indexOf(playerOrDealerHand[playerOrDealerHand.length - 1].toString()), 1)
+    for(let i = 0; i < 1; i++){
+        playerOrDealerHand.push(deck[Math.floor(Math.random() * deck.length)])
     }
-    else if(message === "BUST!" || message === "BLACK JACK!"){
-        return
-    }
+    deck.splice(deck.indexOf(playerOrDealerHand[playerOrDealerHand.length - 1].toString()), 1)
 }
 
-stayButton.addEventListener("click", ()=>{
-    message.textContent = "Dealers turn"
-    if(message === "Dealers turn"){
-        for(let i = 0; i < 5; i++){
-            if(dealerHandSum > 17){
-                hit(dealerHand)
-                sum(dealerHand, dealerHandSum, dealerSum)
-            }
-            else{
-                return
-            }
-        }
-        sum(dealerHand, dealerHandSum, dealerSum)
-        message.textContent = ""
+function cardRender(){
+    const render = []
+
+    for(let i = 0; i < playerHand.length; i++){
+        render.push(playerHand[i].split(''))
     }
-    else{
-        return
-    }
-})
+    console.log(render)
+}
 
 //Starts the game table fresh
 function init(){
     message.textContent = ""
     wagerAmount.textContent = 0;
     wager.value = 0;
-    moneyEarned = 0;
     playerHandSum = 0;
     dealerHandSum = 0;
-    winner = null
+    winner = false
+    playerSum.textContent = 0
+    dealerSum.textContent = 0
     deckFill()
     playerHand = []
     dealerHand = []
