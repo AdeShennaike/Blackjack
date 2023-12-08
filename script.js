@@ -65,7 +65,7 @@ function deckFill(){
     //gives a total value of cards in hand
     function sum(playerOrDealerHand, playerOrDealerSum, playOrDealSum){
         let sumArr = []
-        //if only 2 cards are in hand run this
+        //if only 2 cards are in hand, this runs
         if(!playerOrDealerHand[2]){
             for(let i = 0; i < playerOrDealerHand.length; i++){
                 sumArr.push(playerOrDealerHand[i].split(''))
@@ -122,30 +122,21 @@ function deckFill(){
             }
             
         }
-        //If theres an ace in hand and total value is over 21 then ace equals 1 
-        // for(let i = 0; i < sumArr.length; i++){
-        //     if(sumArr[i][1].includes('A')){
-        //         playerOrDealerSum -= 10
-        //         playOrDealSum.textContent = playerOrDealerSum
-        //     }
-        // }
-        if(playerOrDealerSum > 21){
-            winner = false
+
+        if(playerSum.textContent > 21){
+            message.textContent = "BUST! YOU LOSE JIVE TURKEY"
             setTimeout(()=>{
                 init()
               }, 15000);
         }
-        else if(playerOrDealerSum === 21){
-            winner = true
+        else if(playerSum.textContent === 21){
+            moneyEarned.textContent = moneyEarned.textContent + (wagerAmount.textContent * 3)
+            message.textContent = `BLACK JACK! You won ${moneyEarned.textContent}$`
             setTimeout(()=>{
                 init()
             }, 15000);
         }
-        // moneyEarned.textContent = moneyEarned.textContent + (wagerAmount.textContent * 3)
-        // message.textContent = `BLACK JACK! You won ${moneyEarned.textContent}`
     }
-    
-    //Click handler for buttons
 
 //initializes the game table to begin a new game
 startButton.addEventListener("click", ()=>{
@@ -167,6 +158,7 @@ startButton.addEventListener("click", ()=>{
         sum(dealerHand, dealerHandSum, dealerSum)
     }
     renderCard(playerHand, playerContainer)
+    renderCard(dealerHand, dealerContainer)
 })
 
 stayButton.addEventListener("click", ()=>{
@@ -175,19 +167,37 @@ stayButton.addEventListener("click", ()=>{
     for(let i = 0; i < 5; i++){
         if(dealerSum.textContent < 17){
             hit(dealerHand)
+            renderNewCard(dealerHand, dealerContainer)
             sum(dealerHand, dealerHandSum, dealerSum)
             if(dealerSum.textContent >= 17){
-                return
+                if(dealerSum.textContent === 21){
+                    console.log(dealerSum.textContent)
+                    message.textContent = "DEALER HAS 21, YOU LOSE!"
+                    setTimeout(()=>{
+                        init()
+                    }, 15000);
+                }
+                if(dealerSum.textContent < 21){
+                    if(dealerSum > playerSum){
+                        message.textContent = `DEALER HAS ${dealerSum} YOU LOVE TO LOSE!`
+                        setTimeout(()=>{
+                            init()
+                        }, 15000);
+                    }
+                    else{
+                        moneyEarned.textContent = moneyEarned.textContent + (wagerAmount.textContent * 3)
+                        message.textContent = `YOU WIN! DEALER HAS ${dealerSum.textContent}, YOU EARNED ${moneyEarned.textContent}$`
+                        setTimeout(()=>{
+                            init()
+                        }, 15000);
+                    }
+                }
             }
-        }
-        else{
-            return
         }
     }
     
-    if(dealerSum.textContent === 21){
-        winner = false
-    }
+    
+
 })
 
 //Lets you place the bet 
@@ -206,7 +216,6 @@ betButton.addEventListener("click", ()=>{
 hitButton.addEventListener("click", ()=>{
     if(playerHand[0] || dealerHand[0]){
         hit(playerHand)
-        console.log(playerHand)
         sum(playerHand, playerHandSum, playerSum)
         renderNewCard(playerHand, playerContainer)
     }
@@ -240,36 +249,41 @@ function createCard(rank, suit, container) {
 }
 
 // Generate a card for the dealer and player
-
 function renderCard(playerOrDealerHand, playerOrDealerCont){
     const render = []
     let cardSuit
+    let cardRank
 
     for(let i = 0; i < playerOrDealerHand.length; i++){
         render.push(playerOrDealerHand[i].split(''))
     }
 
     for(let i = 0; i < render.length; i++){
+        cardRank = render[i][1]
         if(render[i][0] === "d"){cardSuit = '&#9830;&#65039;'}
         if(render[i][0] === "c"){cardSuit = '&#9827;&#65039;'}
         if(render[i][0] === "h"){cardSuit = '&#9829;&#65039;'}
         if(render[i][0] === "s"){cardSuit = '&#9824;&#65039;'}
-        createCard(render[i][1], cardSuit, playerOrDealerCont); 
+        if(render[i][2]){cardRank = 10}
+        createCard(cardRank, cardSuit, playerOrDealerCont); 
     }
 } 
 
 function renderNewCard(playerOrDealerHand, playerOrDealerCont){
     const render = []
     let cardSuit
+    let cardRank
 
     render.push(playerOrDealerHand[playerOrDealerHand.length - 1].split(''))
 
     for(let i = 0; i < render.length; i++){
+        cardRank = render[i][1]
         if(render[i][0] === "d"){cardSuit = '&#9830;&#65039;'}
         if(render[i][0] === "c"){cardSuit = '&#9827;&#65039;'}
         if(render[i][0] === "h"){cardSuit = '&#9829;&#65039;'}
         if(render[i][0] === "s"){cardSuit = '&#9824;&#65039;'}
-        createCard(render[i][1], cardSuit, playerOrDealerCont); 
+        if(render[i][2]){cardRank = 10}
+        createCard(cardRank, cardSuit, playerOrDealerCont);; 
     }  
 } 
 
