@@ -250,23 +250,27 @@ function renderCard(playerOrDealerHand, playerOrDealerCont){
     }
 
     for(let i = 0; i < render.length; i++){
-        if(render[i][0] === "d"){
-            cardSuit = '&#9830;&#65039;'
-        }
+        if(render[i][0] === "d"){cardSuit = '&#9830;&#65039;'}
+        if(render[i][0] === "c"){cardSuit = '&#9827;&#65039;'}
+        if(render[i][0] === "h"){cardSuit = '&#9829;&#65039;'}
+        if(render[i][0] === "s"){cardSuit = '&#9824;&#65039;'}
         createCard(render[i][1], cardSuit, playerOrDealerCont); 
     }
-    console.log(render)  
 } 
 
 function renderNewCard(playerOrDealerHand, playerOrDealerCont){
     const render = []
-        
+    let cardSuit
+
     render.push(playerOrDealerHand[playerOrDealerHand.length - 1].split(''))
 
     for(let i = 0; i < render.length; i++){
-        createCard(render[i][1], '&#9830;&#65039;', playerOrDealerCont); 
-    }
-    console.log(render)  
+        if(render[i][0] === "d"){cardSuit = '&#9830;&#65039;'}
+        if(render[i][0] === "c"){cardSuit = '&#9827;&#65039;'}
+        if(render[i][0] === "h"){cardSuit = '&#9829;&#65039;'}
+        if(render[i][0] === "s"){cardSuit = '&#9824;&#65039;'}
+        createCard(render[i][1], cardSuit, playerOrDealerCont); 
+    }  
 } 
 
 //Starts the game table fresh
