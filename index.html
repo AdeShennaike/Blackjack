@@ -1,62 +1,50 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Black Jack</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./style.css">
-        <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
-        <link rel="manifest" href="./assets/site.webmanifest">
-        <script src="./script.js" async defer></script>
-    </head>
-    <body>
-        <header class = "dealer-side">
-            <div>
-                <h1><strong>Black Jack</strong></h1>
-            </div>
-            <div>
-                <h2>Dealer</h2>
-                <button class = "button start">start</button>
-                <p class = "dealer-sum"></p>
-            </div>
-        </header>
-        <div class = "hands dealer">
-            <div class="card one">
-                <div class="rank">A</div>
-                <div class="suit">&#9830;&#65039;</div>
-            </div>
-            <div class="card two">
-                <div class="rank">J</div>
-                <div class="suit">&#9824;</div>
-            </div>
-            <input class = "wager" type="number" placeholder="input wager">
-            <button class = "button bet">Bet</button>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Black Jack</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <script src="./script.js" async defer></script>
+</head>
+<body>
+    <header class="dealer-side">
+        <div>
+            <h1><strong>Black Jack</strong></h1>
         </div>
-        <div class = "results">
-                <p class = "message"></p>
-                <p>Wager Amount</p>
-                <p class = "amount">0</p>
+        <div>
+            <h2>Dealer</h2>
+            <button class="button start">start</button>
+            <p class="dealer-sum"></p>
         </div>
-        <div class = "hands player">
-            <div class="card one">
-                <div class="rank">1</div>
-                <div class="suit">&#9829;&#65039;</div>
-            </div>
-            <div class="card two">
-                <div class="rank">3</div>
-                <div class="suit">&#9827;&#65039;</div>
-            </div>
-            <p class = "player-sum"></p>
-        </div>
-        <footer class = "player-side">
-            <h2>Player</h2>
-            <p class = "money-earned"></p>
-            <button class = "button hit">hit</button>
-            <button class = "button stay">stay</button>
-        </footer> 
-    </body>
+    </header>
+    <div class="hands dealer">
+        <!-- Dealer's cards will be dynamically generated here -->
+        <input class="wager" type="number" placeholder="input wager">
+        <button class="button bet">Bet</button>
+    </div>
+    <div class="results">
+        <p class="message"></p>
+        <p>Wager Amount</p>
+        <p class="amount">0</p>
+    </div>
+    <div class="hands player">
+        <!-- Player's cards will be dynamically generated here -->
+        <p class="player-sum"></p>
+    </div>
+    <footer class="player-side">
+        <h2>Player</h2>
+        <p class="money-earned"></p>
+        <button class="button hit">hit</button>
+        <button class="button stay">stay</button>
+    </footer> 
+
+    <script src="./script.js"></script>
+</body>
 </html>

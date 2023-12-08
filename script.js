@@ -19,6 +19,8 @@ const cardRank = document.getElementsByClassName("rank")
 const playerSum = document.querySelector(".player-sum")
 const dealerSum = document.querySelector(".dealer-sum")
 const moneyEarned = document.querySelector(".money-earned")
+const dealerContainer = document.querySelector('.hands.dealer')
+const playerContainer = document.querySelector('.hands.player')
 
 init()
 
@@ -163,8 +165,8 @@ startButton.addEventListener("click", ()=>{
         removeCards()
         sum(playerHand, playerHandSum, playerSum)
         sum(dealerHand, dealerHandSum, dealerSum)
-        cardRender()
     }
+    renderCard(playerHand, playerContainer)
 })
 
 stayButton.addEventListener("click", ()=>{
@@ -206,6 +208,7 @@ hitButton.addEventListener("click", ()=>{
         hit(playerHand)
         console.log(playerHand)
         sum(playerHand, playerHandSum, playerSum)
+        renderNewCard(playerHand, playerContainer)
     }
     else{
         return
@@ -217,15 +220,54 @@ function hit(playerOrDealerHand){
     }
     deck.splice(deck.indexOf(playerOrDealerHand[playerOrDealerHand.length - 1].toString()), 1)
 }
+    
+function createCard(rank, suit, container) {
+    const cardContainer = document.createElement('div');
+    cardContainer.classList.add('card');
 
-function cardRender(){
-    const render = []
+    const rankElement = document.createElement('div');
+    rankElement.classList.add('rank');
+    rankElement.textContent = rank;
 
-    for(let i = 0; i < playerHand.length; i++){
-        render.push(playerHand[i].split(''))
-    }
-    console.log(render)
+    const suitElement = document.createElement('div');
+    suitElement.classList.add('suit');
+    suitElement.innerHTML = suit;
+
+    cardContainer.appendChild(rankElement);
+    cardContainer.appendChild(suitElement);
+
+    container.appendChild(cardContainer);
 }
+
+// Generate a card for the dealer and player
+
+function renderCard(playerOrDealerHand, playerOrDealerCont){
+    const render = []
+    let cardSuit
+
+    for(let i = 0; i < playerOrDealerHand.length; i++){
+        render.push(playerOrDealerHand[i].split(''))
+    }
+
+    for(let i = 0; i < render.length; i++){
+        if(render[i][0] === "d"){
+            cardSuit = '&#9830;&#65039;'
+        }
+        createCard(render[i][1], cardSuit, playerOrDealerCont); 
+    }
+    console.log(render)  
+} 
+
+function renderNewCard(playerOrDealerHand, playerOrDealerCont){
+    const render = []
+        
+    render.push(playerOrDealerHand[playerOrDealerHand.length - 1].split(''))
+
+    for(let i = 0; i < render.length; i++){
+        createCard(render[i][1], '&#9830;&#65039;', playerOrDealerCont); 
+    }
+    console.log(render)  
+} 
 
 //Starts the game table fresh
 function init(){
