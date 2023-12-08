@@ -2,6 +2,8 @@ body {
     height: 100vh;
     margin: 0;
     background-image: url("./assets/_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +35,9 @@ header, footer {
     cursor: pointer;
 }
 
+img {
+    border-radius: 30%;
+}
 .card .rank {
     font-size: 24px;
     margin-bottom: 5px;
@@ -68,7 +73,7 @@ h2 {
     font-size: 2rem;
 }
 
-.player {
+/* .player {
     width: 100%;
     justify-content: left;
 }
@@ -76,7 +81,7 @@ h2 {
 .dealer {
     width: 100%;
     justify-content: right;
-}
+} */
 
 .player-sum .dealer-sum {
     /* font-size: ; */

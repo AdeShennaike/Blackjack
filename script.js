@@ -300,4 +300,5 @@ function init(){
     deckFill()
     playerHand = []
     dealerHand = []
+    
 }
