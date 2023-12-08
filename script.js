@@ -166,6 +166,7 @@ startButton.addEventListener("click", ()=>{
 
 //Lets you place the bet 
 betButton.addEventListener("click", ()=>{
+    message.textContent = ""
     if(wager.value < 0){
         return
     }
@@ -178,7 +179,7 @@ betButton.addEventListener("click", ()=>{
 //Allows player to draw new card
 hitButton.addEventListener("click", ()=>{
     if(playerHand[0] || dealerHand[0]){
-        hit()
+        hit(playerHand)
         console.log(playerHand)
         sum(playerHand, playerHandSum, playerSum)
     }
@@ -186,17 +187,37 @@ hitButton.addEventListener("click", ()=>{
         return
     }
 })
-function hit(){
+function hit(playerOrDealerHand){
     if(message === ""){
         for(let i = 0; i < 1; i++){
-            playerHand.push(deck[Math.floor(Math.random() * deck.length)])
+            playerOrDealerHand.push(deck[Math.floor(Math.random() * deck.length)])
         }
-        deck.splice(deck.indexOf(playerHand[playerHand.length - 1].toString()), 1)
+        deck.splice(deck.indexOf(playerOrDealerHand[playerOrDealerHand.length - 1].toString()), 1)
     }
     else if(message === "BUST!" || message === "BLACK JACK!"){
         return
     }
 }
+
+stayButton.addEventListener("click", ()=>{
+    message.textContent = "Dealers turn"
+    if(message === "Dealers turn"){
+        for(let i = 0; i < 5; i++){
+            if(dealerHandSum > 17){
+                hit(dealerHand)
+                sum(dealerHand, dealerHandSum, dealerSum)
+            }
+            else{
+                return
+            }
+        }
+        sum(dealerHand, dealerHandSum, dealerSum)
+        message.textContent = ""
+    }
+    else{
+        return
+    }
+})
 
 //Starts the game table fresh
 function init(){
